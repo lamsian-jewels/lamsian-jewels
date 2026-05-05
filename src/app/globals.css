@@ -1,0 +1,158 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gold: #C8A028;
+  --gold-light: #E8C97A;
+  --cream: #FDFAF5;
+  --cream-200: #F2E8D5;
+  --charcoal: #1A1612;
+}
+
+/* ── Scrollbar ─────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F9F3E8; }
+::-webkit-scrollbar-thumb { background: #C8A028; border-radius: 3px; }
+
+/* ── Selection ─────────────────────────────────── */
+::selection { background: #C8A028; color: #1A1612; }
+
+/* ── Smooth scroll ─────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+/* ── Custom cursor ─────────────────────────────── */
+* { cursor: none !important; }
+
+/* Disable custom cursor on admin pages */
+.bg-gray-50 * { cursor: auto !important; }
+.bg-gray-50 #custom-cursor { display: none; }
+
+#custom-cursor {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: multiply;
+}
+#custom-cursor.hovering {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1.5px solid var(--gold);
+  mix-blend-mode: normal;
+}
+
+/* ── Page transition ────────────────────────────── */
+.page-enter { opacity: 0; transform: translateY(16px); }
+.page-enter-active {
+  opacity: 1; transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* ── Shimmer text ───────────────────────────────── */
+.text-shimmer {
+  background: linear-gradient(90deg, #C8A028 0%, #E8C97A 30%, #C8A028 60%, #D4A843 80%, #C8A028 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ── Gold line divider ──────────────────────────── */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C8A028, transparent);
+}
+
+/* ── Product card ───────────────────────────────── */
+.product-card-img {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.product-card:hover .product-card-img {
+  transform: scale(1.08);
+}
+
+/* ── Magnetic button ────────────────────────────── */
+.btn-gold {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  transition: color 0.3s ease;
+}
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.btn-gold:hover { color: var(--charcoal); }
+.btn-gold:hover::before { transform: translateY(0); }
+.btn-gold span { position: relative; z-index: 1; }
+
+/* ── Noise texture overlay ──────────────────────── */
+.noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* ── Marquee ────────────────────────────────────── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-inner { animation: marquee 20s linear infinite; }
+.marquee-inner:hover { animation-play-state: paused; }
+
+/* ── Stagger children ────────────────────────────── */
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 100ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 200ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 300ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 400ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 500ms; }
+
+/* ── Reveal on scroll ───────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Admin table ─────────────────────────────────── */
+.admin-table tr { transition: background 0.2s; }
+.admin-table tr:hover { background: rgba(200, 160, 40, 0.06); }
+
+/* ── Image skeleton ─────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, #F2E8D5 25%, #E8D9BE 50%, #F2E8D5 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
