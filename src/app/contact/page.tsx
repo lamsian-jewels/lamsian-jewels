@@ -1,15 +1,6 @@
 "use client";
-import type { Metadata } from "next";
 import { motion } from "framer-motion";
 import { MessageCircle, Instagram, Music, MapPin } from "lucide-react";
-
-export const metadata: Metadata = {
-  title: "Contact — Lamsian Jewels | WhatsApp Jewelry Orders Kenya",
-  description:
-    "Contact Lamsian Jewels through WhatsApp, Instagram or TikTok for jewelry orders delivered across all 47 Kenyan counties.",
-  keywords:
-    "contact jewelry Kenya, WhatsApp jewelry orders, Kenyan jewelry delivery, 47 counties, Lamsian Jewels contact",
-};
 
 export default function ContactPage() {
   const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "254700000000";
