@@ -1,9 +1,38 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey)
+
+const emptyQuery = () => {
+  const query: any = {
+    select: () => query,
+    order: () => query,
+    eq: () => query,
+    single: () => query,
+    limit: () => query,
+    then: (resolve: any) => Promise.resolve({ data: [], error: null }).then(resolve),
+    catch: (fn: any) => Promise.resolve({ data: [], error: null }).catch(fn),
+  }
+
+  return query
+}
+
+const emptyFrom = () => emptyQuery()
+
+const emptyAuth = {
+  getSession: async () => ({ data: { session: null }, error: null }),
+  signOut: async () => ({ error: null }),
+  signInWithPassword: async () => ({ data: { session: null }, error: null }),
+}
+
+export const supabase: any = isSupabaseConfigured
+  ? createClient(supabaseUrl!, supabaseAnonKey!)
+  : {
+      from: emptyFrom,
+      auth: emptyAuth,
+    }
 
 export type Product = {
   id: string
