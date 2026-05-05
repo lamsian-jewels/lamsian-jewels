@@ -455,6 +455,7 @@ export default function AdminDashboard() {
                   <div className="text-center py-16 font-body text-gray-400">No products found for this category.</div>
                 )}
               </div>
+            </>
             ) : (
               /* Orders Table */
               <div className="bg-white border border-gray-200 overflow-hidden">

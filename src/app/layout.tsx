@@ -74,7 +74,7 @@ export const metadata: Metadata = {
   description:
     "Lamsian Jewels crafts fine rings, necklaces, earrings, bracelets, anklets and watches with Kenya-wide delivery across all 47 counties, from Nairobi to Mombasa, Kisumu, Nakuru, Eldoret and more.",
   keywords: `handmade jewelry, Kenyan jewelry, gold jewelry, silver jewelry, bridal jewelry, gift jewelry, rings, necklaces, earrings, bracelets, anklets, watches, jewelry delivery Kenya, Lamsian Jewels, ${seoCountyKeywords}`,
-  viewport: "width=device-width, initial-scale=1",
+  metadataBase: new URL("https://lamsianjewels.com"),
   authors: [{ name: "Lamsian Jewels", url: "https://lamsianjewels.com" }],
   creator: "Lamsian Jewels",
   publisher: "Lamsian Jewels",
@@ -113,6 +113,11 @@ export const metadata: Metadata = {
       follow: true,
     },
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
