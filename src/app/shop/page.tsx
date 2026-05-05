@@ -3,10 +3,18 @@ import ShopClient from "./ShopClient";
 import { supabase } from "@/lib/supabase";
 
 export const metadata = {
-  title: "Shop — Lamsian Jewels",
-  description: "Browse our full collection of rings, necklaces, earrings, bracelets, anklets, watches and sets.",
+  title: "Shop — Lamsian Jewels | Kenya Jewelry Collection",
+  description:
+    "Browse handcrafted rings, necklaces, earrings, bracelets, anklets, watches and curated jewelry sets from Lamsian Jewels.",
+  keywords:
+    "shop jewelry Kenya, handmade jewelry collection, rings, necklaces, earrings, bracelets, anklets, watches, jewelry sets, Kenya delivery, 47 counties",
+  openGraph: {
+    title: "Shop — Lamsian Jewels",
+    description:
+      "Browse handcrafted rings, necklaces, earrings, bracelets, anklets and watches with delivery across all 47 Kenyan counties.",
+    type: "website",
+  },
 };
-
 export const revalidate = 60;
 
 export default async function ShopPage() {

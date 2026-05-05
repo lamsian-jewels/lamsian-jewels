@@ -1,6 +1,15 @@
 "use client";
+import type { Metadata } from "next";
 import { motion } from "framer-motion";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "About — Lamsian Jewels | Kenyan Jewelry Story",
+  description:
+    "Learn the story of Lamsian Jewels, a Kenyan jewelry brand delivering artisan rings, necklaces, earrings and more across all 47 counties.",
+  keywords:
+    "Kenyan jewelry story, handmade jewelry founder, artisan jewelry Kenya, jewelry delivery across 47 counties, Lamsian Jewels about",
+};
 
 export default function AboutPage() {
   return (
